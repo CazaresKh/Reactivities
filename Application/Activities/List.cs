@@ -1,11 +1,11 @@
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 using Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Persistence;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Application.Activities
 {
@@ -16,7 +16,9 @@ namespace Application.Activities
         public class Handler : IRequestHandler<Query, List<Activity>>
         {
             private readonly DataContext _context;
+
             private readonly ILogger<List> _logger;
+
             public Handler(DataContext context, ILogger<List> logger)
             {
                 _logger = logger;
@@ -25,7 +27,7 @@ namespace Application.Activities
 
             public async Task<List<Activity>> Handle(Query request,
                 CancellationToken cancellationToken)
-            {        
+            {
                 var activities = await _context.Activities.ToListAsync();
 
                 return activities;

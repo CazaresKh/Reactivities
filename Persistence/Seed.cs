@@ -1,15 +1,15 @@
+using Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Domain;
 
 namespace Persistence
 {
     public class Seed
     {
-        public static void SeedData (DataContext context)
+        public static void SeedData(DataContext context)
         {
-            if(!context.Activities.Any())
+            if (!context.Activities.Any())
             {
                 var activities = new List<Activity>
                 {
@@ -102,7 +102,7 @@ namespace Persistence
                     Category = "film",
                     City = "London",
                     Venue = "Cinema",
-                }  
+                }
                 };
 
                 context.Activities.AddRange(activities);
